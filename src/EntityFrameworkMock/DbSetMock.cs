@@ -148,7 +148,7 @@ namespace EntityFrameworkMock
                     properties.Select(propertyInfo =>
                     {
                         var getter = Expression.Property(Expression.Convert(original, entityType), propertyInfo);
-                        var setter = propertyInfo.GetSetMethod();
+                        var setter = propertyInfo.GetSetMethod(true);
                         return Expression.Call(clone, setter, getter);
                     })
                 ),
